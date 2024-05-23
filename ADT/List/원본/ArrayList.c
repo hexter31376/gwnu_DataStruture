@@ -1,12 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-#ifndef Datatype // Datatype이 정의되어 있지 않다면
-#define Datatype int // Datatype을 정의하고 int로 설정
-#endif
-
-#ifndef	_ARRAYLIST_H_ // ArrayList.h가 정의되어 있지 않다면
-#define	_ARRAYLIST_H_ // ArrayList.h를 정의할것
-
+#define Datatype int // 유연한 코딩을 위한 데이터 타입 정의
 #define MAX_SIZE 100 // 배열 리스트의 최대 크기 정의
 
 typedef struct ArrayList { // 배열 리스트 구조체의 정의
@@ -84,4 +79,16 @@ void AL_replace (ArrayList* AL, int pos, Datatype data) { // 배열 리스트의
     }
 }
 
-#endif // if 종료
+int main(){
+    ArrayList alist;
+    AL_init_list(&alist);
+    AL_insert(&alist, 0, 10);
+    AL_insert(&alist, AL_get_length(&alist), 30);
+    AL_insert(&alist, 1, 20);
+    AL_insert(&alist, AL_get_length(&alist), 40);
+    AL_print_list(&alist);
+    AL_delete(&alist, 0);
+    AL_replace(&alist, 2, 50);
+    AL_replace(&alist, AL_get_pos(&alist, 20), 10);
+    AL_print_list(&alist);
+}
