@@ -88,6 +88,8 @@ int meeting(){
                 People female =  pop_queue(&queueFemale); // 여자 대기 큐에서 사람을 pop해서 저장하기
                 printf("커플이 탄생했습니다! %s와 %s\n", people.name, female.name); // 그 사람과 매칭되었음을 출력
             }
+        } else {
+            printf("성별을 제대로 입력해 주십시오\n");
         }
     }
 }
