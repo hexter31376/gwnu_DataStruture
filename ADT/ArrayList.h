@@ -1,3 +1,13 @@
+// ArrayList의 모든 기능을 구현합니다.
+// AL_init_list (ArrayList* AL) 리스트 초기화
+// AL_get_length() 리스트의 길이 반환
+
+// 구현시 유의 사항
+// 모든 데이터를 받을 수 있어야 하므로 void* 형으로 데이터를 받습니다.
+// ArrayList는 공간이 가득 찰 시 공간을 현재 공간을 2배 늘려서 재할당하는 행동을 진행합니다. (realloc 사용)
+// 나중에 정렬의 편의성을 위해 구조체의 경우 구조체 내부 요소에 접근 할 수 있게 하는 함수도 추가합니다.
+// 
+
 #include <stdio.h>
 
 #ifndef Datatype // Datatype이 정의되어 있지 않다면
