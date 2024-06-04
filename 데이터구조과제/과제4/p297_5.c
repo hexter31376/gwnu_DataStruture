@@ -1,5 +1,8 @@
 #include <stdio.h>
 
-int main () {
-    return 0;
+Tnode* 
+
+int main () { //
+
+    return 0; // 
 }
