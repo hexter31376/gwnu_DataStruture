@@ -1,3 +1,7 @@
+/**
+ * 이진 탐색 트리의 ADT 실제 구현
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
