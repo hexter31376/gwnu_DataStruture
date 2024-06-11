@@ -9,6 +9,8 @@ typedef struct ArrayList { // 배열 리스트 구조체의 정의
     Datatype list[MAX_SIZE]; // 실제 배열 리스트 정의
 } ArrayList; // 배열 리스트 자료명 정의
 
+
+
 // 리스트 초기화
 void AL_init_list (ArrayList* AL) { // 배열 리스트의 주소를 매개변수로 받는다.
     AL->length = 0; // 리스트의 길이를 0으로
