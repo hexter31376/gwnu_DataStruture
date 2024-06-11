@@ -159,6 +159,8 @@ void SLL_insert_Lnode (Lnode** pointerToHead, Lnode* beforeLnode, Lnode* newLnod
     }
 }
 
+
+// 이거 나중에 구현해야함 ㅅㄱ
 void DLL_insert_Lnode (Lnode** pointerToHead, Lnode* beforeLnode, Lnode* newLnode) { // 이중 연결 리스트 포인터 직접 조작을 위한 포인터, 이전 노드의 주소, 새로운 노드의 주소를 매개변수로, 반환값 없음
     if(*pointerToHead == NULL) { // 연결 리스트가 비어있을때
         newLnode->next = newLnode->prev = NULL; // 연결 리스트의 next와 prev 초기화
