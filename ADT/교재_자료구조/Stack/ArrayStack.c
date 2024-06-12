@@ -11,6 +11,8 @@ typedef struct ArrayStack { // 배열 스택의 구조체 정의
     DataType stack[MAX_SIZE]; // 실제 값을 저장하는 스택
 } ArrayStack; // 배열 스택의 명칭 정의
 
+
+
 // 배열 스택 초기화
 void AS_init_stack (ArrayStack* AS) { // 배열 스택의 주소를 매개변수로, 반환값 없음
     AS->top = -1; // 비어있는 상태를 -1로 정의
