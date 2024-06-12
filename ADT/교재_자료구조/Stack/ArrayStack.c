@@ -78,4 +78,5 @@ int main () {
     printf("현재 top 항목은 %d\n", AS_get_top(&stackSample));
     AS_pop(&stackSample);
     AS_pop(&stackSample);
+    return 0;
 }

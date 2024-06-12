@@ -93,4 +93,5 @@ int main(){
     AL_replace(&alist, 2, 50);
     AL_replace(&alist, AL_get_position(&alist, 20), 10);
     AL_print_list(&alist);
+    return 0;
 }
