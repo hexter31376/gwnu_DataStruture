@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define MAX_SIZE 100
-#define DataType int
+#define MAX_SIZE 100 // 배열 스택의 최대 크기 정의
+#define DataType int // 유연한 코딩을 위한 데이터 타입 정의
 
 // 배열 스택 정의
 typedef struct ArrayStack { // 배열 스택의 구조체 정의
