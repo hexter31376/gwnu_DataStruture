@@ -22,7 +22,7 @@ void AS_init_stack (ArrayStack* AS) { // 배열 스택의 주소를 매개변수
 void AS_print_stack (ArrayStack* AS) { // 배열 스택의 주소를 매개변수로, 반환값 없음
     printf("top-> "); // 스택의 top이라는 의미의 출력
     for (int i = AS->top; i>=0; i--) { // 스택의 top에 해당하는 인덱스부터 0번 인덱스까지
-        printf("%d| ", AS->stack[i]); // 스택의 i번째 항목을 출력
+        printf("%d | ", AS->stack[i]); // 스택의 i번째 항목을 출력
     }
     printf("\n"); // 개행
 }

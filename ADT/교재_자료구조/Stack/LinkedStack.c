@@ -25,7 +25,7 @@ void LS_init_stack (LinkedStack* LS) { // 연결 스택의 주소를 매개변�
 void LS_print_stack (LinkedStack* LS) { // 연결 스택의 주소를 매개변수로, 반환값 없음
     printf("top-> "); // 스택의 top이라는 의미의 출력
     for (Snode *cursorNode = LS->top; cursorNode; cursorNode = cursorNode->next) { // 커서가 널값이 아닐동안 계속
-        printf("%d| ", cursorNode->data); // 연결 스택 커서 노드의 데이터 출력
+        printf("%d | ", cursorNode->data); // 연결 스택 커서 노드의 데이터 출력
     }
     printf("\n"); // 개행
 }
