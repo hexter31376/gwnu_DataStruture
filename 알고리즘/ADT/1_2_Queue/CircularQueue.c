@@ -68,7 +68,7 @@ DataType CQ_get_data (CircularQueue* CQ) { // 원형 큐의 주소를 파라미�
         printf("CQ_get_data : 공백 큐이므로 항목 삭제가 불가능합니다."); // 경고문 출력
         exit(1); // 프로그램 종료
     } else { // 큐가 비어있지 않다면
-        return CQ->queue[CQ->front]; // 큐의 해당 front위치의 데이터를 반환
+        return CQ->queue[CQ->front + 1]; // 큐의 해당 front위치의 데이터를 반환
     }
 }
 
