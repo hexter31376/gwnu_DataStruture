@@ -69,9 +69,9 @@ DataType LS_pop (LinkedStack* LS) { // 연결 스택의 주소를 매개변수�
 }
 
 // 연결 스택에서 top 데이터를 반환
-DataType LS_get_top (LinkedStack* LS) { // 연결 스택의 주소를 매개변수로, top 데이터 반환
+DataType LS_get_data (LinkedStack* LS) { // 연결 스택의 주소를 매개변수로, top 데이터 반환
     if (LS_is_stack_empty(LS)) { // 스택이 비어있다면
-        printf("LS_get_top : 공백 스택이므로 데이터가 없습니다.\n"); // 경고문 출력
+        printf("LS_get_data : 공백 스택이므로 데이터가 없습니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
     } else { // 스택이 비어있지 않다면
         return LS->top->data; // 연결 스택의 top의 데이터를 반환
@@ -85,11 +85,11 @@ int main () {
     LS_push(&stackSample, 20);
     LS_push(&stackSample, 30);
     LS_print_stack(&stackSample);
-    printf("현재 top 항목은 %d\n", LS_get_top(&stackSample));
+    printf("현재 top 항목은 %d\n", LS_get_data(&stackSample));
     LS_pop(&stackSample);
-    printf("현재 top 항목은 %d\n", LS_get_top(&stackSample));
+    printf("현재 top 항목은 %d\n", LS_get_data(&stackSample));
     LS_pop(&stackSample);
-    printf("현재 top 항목은 %d\n", LS_get_top(&stackSample));
+    printf("현재 top 항목은 %d\n", LS_get_data(&stackSample));
     LS_pop(&stackSample);
     LS_pop(&stackSample);
     return 0;

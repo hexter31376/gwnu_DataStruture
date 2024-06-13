@@ -58,9 +58,9 @@ DataType AS_pop (ArrayStack* AS) { // 배열 스택의 주소를 매개변수로
 }
 
 // 배열 스택에서 top 데이터를 반환
-DataType AS_get_top (ArrayStack* AS) { // 배열 스택의 주소를 매개변수로, top 인덱스의 데이터 반환
+DataType AS_get_data (ArrayStack* AS) { // 배열 스택의 주소를 매개변수로, top 인덱스의 데이터 반환
     if (AS_is_stack_empty(AS)) { // 스택이 비어 있다면
-        printf("AS_get_top_data : 공백 스택이므로 데이터가 없습니다.");
+        printf("AS_get_data : 공백 스택이므로 데이터가 없습니다.");
         exit(1); // 프로그램 종료
     } else { // 스택이 가득 차있지 않다면
         return AS->stack[AS->top]; // 스택의 top의 인덱스에 해당하는 위치의 값을 반환
@@ -73,11 +73,11 @@ int main () {
     AS_push(&stackSample, 20);
     AS_push(&stackSample, 30);
     AS_print_stack(&stackSample);
-    printf("현재 top 항목은 %d\n", AS_get_top(&stackSample));
+    printf("현재 top 항목은 %d\n", AS_get_data(&stackSample));
     AS_pop(&stackSample);
-    printf("현재 top 항목은 %d\n", AS_get_top(&stackSample));
+    printf("현재 top 항목은 %d\n", AS_get_data(&stackSample));
     AS_pop(&stackSample);
-    printf("현재 top 항목은 %d\n", AS_get_top(&stackSample));
+    printf("현재 top 항목은 %d\n", AS_get_data(&stackSample));
     AS_pop(&stackSample);
     AS_pop(&stackSample);
     return 0;
