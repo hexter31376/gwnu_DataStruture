@@ -62,10 +62,29 @@ DataType CQ_pop (CircularQueue* CQ) { // 원형 큐의 주소를 파라미터로
     }
 }
 
-DataType CQ_get_data () {
-
+// 원형 큐에서 front 데이터 반환
+DataType CQ_get_data (CircularQueue* CQ) { // 원형 큐의 주소를 파라미터로, front 데이터 반환
+    if (CQ_is_queue_empty(CQ)) { // 큐가 비었다면
+        printf("CQ_get_data : 공백 큐이므로 항목 삭제가 불가능합니다."); // 경고문 출력
+        exit(1); // 프로그램 종료
+    } else { // 큐가 비어있지 않다면
+        return CQ->queue[CQ->front]; // 큐의 해당 front위치의 데이터를 반환
+    }
 }
 
 int main () {
+    CircularQueue cqueue;
+    CQ_init_queue(&cqueue);
+    CQ_push(&cqueue, 10);
+    CQ_push(&cqueue, 20);
+    CQ_push(&cqueue, 30);
+    CQ_print_queue(&cqueue);
+    printf("현재 front 항목은 %d\n", CQ_get_data(&cqueue));
+    CQ_pop(&cqueue);
+    printf("현재 front 항목은 %d\n", CQ_get_data(&cqueue));
+    CQ_pop(&cqueue);
+    printf("현재 front 항목은 %d\n", CQ_get_data(&cqueue));
+    CQ_pop(&cqueue);
+    CQ_pop(&cqueue);
     return 0;
 }
