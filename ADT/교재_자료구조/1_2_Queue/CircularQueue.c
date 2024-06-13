@@ -45,7 +45,7 @@ void CQ_push (CircularQueue* CQ, Datatype data) { // 원형 큐의 주소를 파
         exit(1); // 프로그램 종료
     } else { // 큐에 삽입할 수 있는 공간이 있다면
         CQ->rear = (CQ->rear + 1) % MAX_SIZE; // rear(입구)의 
-        CQ->queue[CQ->rear] = data;
+        CQ->queue[CQ->rear] = data; // 
     }
 }
 
