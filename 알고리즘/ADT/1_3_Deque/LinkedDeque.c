@@ -65,3 +65,20 @@ void LD_push_front (LinkedDeque* LD, LD_DataType data) { // 연결 덱의 주소
 
 // 덱의 뒤에 삽입
 // LQ_queue_push와 동일한 동작
+void LD_push_rear (LinkedDeque* LD, LD_DataType data) { // 연결 덱의 주소, 삽입할 데이터를 매개변수로, 반환값 없음
+    Dnode* newDnode = (Dnode*)malloc(sizeof(Dnode)); // 연결 덱 노드 동적 할당
+    if (LD_is_deque_full(newDnode)) { // 연결 덱이 가득 차 있다면
+        printf("LD_push_rear : 포화 덱이므로 항목 삽입이 불가능합니다.\n"); // 경고문 출력
+        exit(1); // 프로그램 종료
+    } else { // 연결 덱이 가득 차 있지 않다면
+        newDnode->prev = LD->rear; // 연결 덱의 마지막 부분이 가리키는 주소의 값을 새로운 노드의 prev가 가리키게 함
+        newDnode->data = data; // 파라미터의 데이터를 새 노드의 데이터에 삽입
+        newDnode->next = NULL; // 새로운 노드의 next를 가리키는 포인터 초기화
+        if (LD_is_deque_empty(LD)) { // 만약 덱이 비어있다면
+            LD->front = newDnode; // 덱의 시작부의 포인터가 새로운 노드를 가리키게 함
+        } else { // 만약 덱이 비어있지 않다면
+            LD->rear->next = newDnode; // 연결 덱의 마지막이 가리키는 노드의  다음 노드를 가리키는 next가 새로운 노드를 가리키게 함
+        }
+        LD->rear = newDnode; // 연결 덱의 마지막 요소로 새로운 노드를 가리기게 함
+    }
+}
