@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define DataType int // 유연한 코딩을 위한 데이터 타입 정의
+#define LQ_DataType int // 유연한 코딩을 위한 데이터 타입 정의
 
 // 연결 큐 노드 구조 정의
 typedef struct Qnode { // 연결 큐의 노드 구조체 선언
-    DataType data; // 실제 데이터 저장 공간
+    LQ_DataType data; // 실제 데이터 저장 공간
     struct Qnode* next; // 다른 노드를 가리킬 포인터
 } Qnode; // 연결 큐 노드의 명칭 선언
 
@@ -43,7 +43,7 @@ bool LQ_is_queue_empty (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미�
 }
 
 // 연결 큐에 삽입
-void LQ_push (LinkedQueue* LQ, DataType data) { // 연결 큐의 주소, 삽입할 데이터를 파라미터로, 반환갑 없음
+void LQ_push (LinkedQueue* LQ, LQ_DataType data) { // 연결 큐의 주소, 삽입할 데이터를 파라미터로, 반환갑 없음
     Qnode *newQnode = (Qnode*)malloc(sizeof(Qnode)); // 연결 큐 노드 동적 할당
 
     if (LQ_is_queue_full(newQnode)) { // 큐가 가득 차 있다면
@@ -62,13 +62,13 @@ void LQ_push (LinkedQueue* LQ, DataType data) { // 연결 큐의 주소, 삽입�
 }
 
 // 연결큐에서 삭제
-DataType LQ_pop (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터로, pop한 데이터 반환
+LQ_DataType LQ_pop (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터로, pop한 데이터 반환
     if (LQ_is_queue_empty(LQ)) { // 큐가 비어있다면
         printf("LQ_pop : 공백 큐이므로 삭제가 불가능합니다."); // 경고문 출력
         exit(1); // 프로그램 종료
     } else { // 큐가 비어있지 않다면
         Qnode* popedQnode = LQ->front; // pop할 노드 지정 이때 front가 출구이므로 front가 가리키는 노드 지정
-        DataType popedQdata = popedQnode->data; // pop할 노드의 data를 popedQdata에 저장
+        LQ_DataType popedQdata = popedQnode->data; // pop할 노드의 data를 popedQdata에 저장
         LQ->front = LQ->front->next; // 데이터의 출구를 가리키는 포인터가 데이터의 출구가 가리키는 노드의 next포인터가 가리키는 포인터를 가리키게 한다
         if (LQ_is_queue_empty(LQ)) { // 노드를 지우고 난 뒤에 공백 큐가 된다면
             LQ->rear = NULL; // rear의 포인터도 null로 만들어준다
@@ -79,7 +79,7 @@ DataType LQ_pop (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터로, 
 }
 
 // 연결 큐에서 front 데이터를 반환
-DataType LQ_get_data (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터로, front 데이터 반환
+LQ_DataType LQ_get_data (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터로, front 데이터 반환
     if (LQ_is_queue_empty(LQ)) { // 큐가 비어있다면
         printf("LQ_get_data : 공백 큐이므로 삭제가 불가능합니다."); // 경고문 출력
         exit(1); // 프로그램 종료

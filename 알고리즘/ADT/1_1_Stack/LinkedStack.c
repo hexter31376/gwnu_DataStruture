@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define DataType int // 유연한 코딩을 위한 데이터 타입 정의
+#define LS_DataType int // 유연한 코딩을 위한 데이터 타입 정의
 
 // 연결 스택 노드 구조 정의
 typedef struct Snode { // 연결 스택 노드의 구조체 선언
-    DataType data; // 실제 데이터를 저장하는 공간 정의
+    LS_DataType data; // 실제 데이터를 저장하는 공간 정의
     struct Snode* next; // 다른 노드를 가리킬 수 있는 링크 정의
 } Snode; // 연결 스택 노드의 명칭 선언
 
@@ -41,7 +41,7 @@ bool LS_is_stack_empty (LinkedStack* LS) { // 연결 스택의 주소를 매개�
 }
 
 // 연결 스택에 삽입
-void LS_push (LinkedStack* LS, DataType data) { // 연결 스택의 주소, 삽입하려는 데이터를 매개변수로, 반환값 없음
+void LS_push (LinkedStack* LS, LS_DataType data) { // 연결 스택의 주소, 삽입하려는 데이터를 매개변수로, 반환값 없음
     Snode *newNode = (Snode*)malloc(sizeof(Snode)); // 새로운 노드를 동적 생성
     if (LS_is_stack_full(newNode)) { // 스택이 가득 차있다면
         printf("LS_push : 포화 스택이거나 할당 오류이므로 항목 삽입이 불가능합니다.\n"); // 경고문 출력
@@ -55,13 +55,13 @@ void LS_push (LinkedStack* LS, DataType data) { // 연결 스택의 주소, 삽�
 }
 
 // 연결 스택에서 삭제
-DataType LS_pop (LinkedStack* LS) { // 연결 스택의 주소를 매개변수로, pop 한 데이터 반환
+LS_DataType LS_pop (LinkedStack* LS) { // 연결 스택의 주소를 매개변수로, pop 한 데이터 반환
     if (LS_is_stack_empty(LS)) { // 스택이 비어있다면
         printf("LS_pop : 공백 스택이므로 항목 삭제가 불가능합니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
     } else { // 스택이 비어있지 않다면
         Snode* deletedNode = LS->top; // 연결 스택의 탑을 지울 노드로 지정
-        DataType popedData = deletedNode->data; // 지울 노드에서 데이터 추출해서 저장
+        LS_DataType popedData = deletedNode->data; // 지울 노드에서 데이터 추출해서 저장
         LS->top = LS->top->next; // 지울 노드의 다음 노드를 새로운 top으로 지정 // LS->top = deletedNode->link와 동일하다
         free(deletedNode); // 지울 노드를 동적 할당 해제하기
         return popedData; // 추출한 데이터 반환
@@ -69,7 +69,7 @@ DataType LS_pop (LinkedStack* LS) { // 연결 스택의 주소를 매개변수�
 }
 
 // 연결 스택에서 top 데이터를 반환
-DataType LS_get_data (LinkedStack* LS) { // 연결 스택의 주소를 매개변수로, top 데이터 반환
+LS_DataType LS_get_data (LinkedStack* LS) { // 연결 스택의 주소를 매개변수로, top 데이터 반환
     if (LS_is_stack_empty(LS)) { // 스택이 비어있다면
         printf("LS_get_data : 공백 스택이므로 데이터가 없습니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
