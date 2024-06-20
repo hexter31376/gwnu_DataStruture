@@ -25,7 +25,7 @@ void LD_init_deque (LinkedDeque* LD) { // 연결 덱의 주소를 매개변수�
 }
 
 // 연결 덱 항목들을 출력
-void LD_print_deque (LinkedDeque* LD) {
+void LD_print_deque (LinkedDeque* LD) { // 연결 덱의 주소를 매개변수로, 반환값 없음
     printf("front <- "); // 데이터의 출구 표시 출력
     for(Dnode* nodeCursor = LD->front; nodeCursor; nodeCursor = nodeCursor->next) { // 노드 커서를 만들고 그 노드 커서가 null 즉, 연결 덱의 끝이 아닐 때까지
         printf("%d <-> ", nodeCursor->data); // 해당 커서 위치의 데이터 출력
@@ -39,6 +39,12 @@ bool LD_is_deque_full (Dnode *node) { // 노드의 주소를 파라미터로, �
 }
 
 // 연결 큐가 공백 상태인지 확인
-bool LD_is_deque_empty (LinkedDeque* LD) { // 연결 큐의 주소를 파라미터로, 참, 거짓 반환
+bool LD_is_deque_empty (LinkedDeque* LD) { // 연결 덱의 주소를 파라미터로, 참, 거짓 반환
     return LD->front == NULL; // front가 공백인지에 대한 참 거짓 결과 반환
+}
+
+// 덱의 앞에 삽입
+// LS_stack_pop 과 동일한 동작
+void LD_push_front (LinkedDeque* LD, LD_DataType data) {
+    Dnode* new
 }
