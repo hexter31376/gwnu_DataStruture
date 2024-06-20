@@ -19,6 +19,7 @@ typedef struct LinkedStack { // 연결 스택의 구조체 선언
 // 연결 스택 초기화
 void LS_init_stack (LinkedStack* LS) { // 연결 스택의 주소를 매개변수로, 반환값 없음
     LS->top = NULL; // 연결 스택의 top을 null로
+    LS->length = 0; // 연결 스택 길이 초기화
 }
 
 // 연결 스택 항목들을 출력
@@ -50,7 +51,7 @@ void LS_push (LinkedStack* LS, LS_DataType data) { // 연결 스택의 주소, �
         newNode->data = data; // 파라미터 데이터를 동적 생성한 노드에 삽입
         newNode->next = LS->top; // 동적 생성한 노드의 링크가 연결 스택의 top이 가리키는 노드를 가리키게 한다 // null이면 당연히 아무것도 가리키지 않겠다.
         LS->top = newNode; // 연결 리스트의 top이 동적 생성한 노드를 가리키게 한다
-        LS->length++; // 연결 리스트 카운트를 1 증가
+        LS->length++; // 연결 스택 카운트를 1 증가
     }
 }
 
@@ -64,6 +65,7 @@ LS_DataType LS_pop (LinkedStack* LS) { // 연결 스택의 주소를 매개변�
         LS_DataType popedData = deletedNode->data; // 지울 노드에서 데이터 추출해서 저장
         LS->top = LS->top->next; // 지울 노드의 다음 노드를 새로운 top으로 지정 // LS->top = deletedNode->link와 동일하다
         free(deletedNode); // 지울 노드를 동적 할당 해제하기
+        LS->length--; // 연결 스택 카운트를 1 감소
         return popedData; // 추출한 데이터 반환
     }
 }

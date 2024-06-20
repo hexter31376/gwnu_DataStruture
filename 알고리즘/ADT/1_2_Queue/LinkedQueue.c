@@ -57,6 +57,7 @@ void LQ_push (LinkedQueue* LQ, LQ_DataType data) { // 연결 큐의 주소, 삽�
         } else { // 큐가 비어있지 않다면
             LQ->rear->next = newQnode; // 큐의 입구 포인터가 가리키는 노드의 next 포인터가 새로운 노드를 가리키도록 한다
         }
+        LQ->length++; // 연결 큐 길이 증가
         LQ->rear = newQnode; // 큐의 입구 포인터가 새로운 노드를 가리키도록 한다
     }
 }
@@ -74,6 +75,7 @@ LQ_DataType LQ_pop (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터�
             LQ->rear = NULL; // rear의 포인터도 null로 만들어준다
         }
         free(popedQnode); // pop한 노드의 동적 공간 반납하기
+        LQ->length--; // 연결 큐 길이 감소
         return popedQdata; // pop한 데이터 반환
     }
 }

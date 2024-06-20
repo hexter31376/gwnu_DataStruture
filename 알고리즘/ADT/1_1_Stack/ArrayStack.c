@@ -8,6 +8,7 @@
 // 배열 스택 정의
 typedef struct ArrayStack { // 배열 스택의 구조체 정의
     int top; // 스택의 입/출구 인덱스 지정용 top
+    int length; // 스택의 길이 저장 변수;
     AS_DataType stack[AS_MAX_SIZE]; // 실제 값을 저장하는 스택
 } ArrayStack; // 배열 스택의 명칭 정의
 
@@ -16,6 +17,7 @@ typedef struct ArrayStack { // 배열 스택의 구조체 정의
 // 배열 스택 초기화
 void AS_init_stack (ArrayStack* AS) { // 배열 스택의 주소를 매개변수로, 반환값 없음
     AS->top = -1; // 비어있는 상태를 -1로 정의
+    AS->length = 0; // 배열 스택 길이 초기화
 }
 
 // 배열 스택 항목들을 출력
@@ -44,6 +46,7 @@ void AS_push (ArrayStack* AS, AS_DataType data) { // 배열 스택의 주소, �
         exit(1); // 프로그램 종료
     } else { // 스택이 가득 차있지 않다면
         AS->stack[++AS->top] = data; // 스택의 top을 1증가시킨 후, 그 인덱스 값에 해당하는 위치에 data를 삽입
+        AS->length++; // 스택의 길이 증가
     }
 }
 
@@ -53,6 +56,7 @@ AS_DataType AS_pop (ArrayStack* AS) { // 배열 스택의 주소를 매개변수
         printf("AS_pop : 공백 스택이므로 항목 삭제가 불가능합니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
     } else { // 스택이 가득 차있지 않다면
+        AS->length--; // 스택의 길이 감소
         return AS->stack[AS->top--]; // 스택의 인덱스 값에 해당하는 위치에 인덱스 값을 대입한 후 스택의 top을 1감소시킨 후, 대입한 위치의 값을 리턴
     }
 }

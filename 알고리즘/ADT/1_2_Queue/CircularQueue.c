@@ -58,6 +58,7 @@ CQ_DataType CQ_pop (CircularQueue* CQ) { // 원형 큐의 주소를 파라미터
         exit(1); // 프로그램 종료
     } else { // 큐가 비어있지 않다면
         CQ->front = (CQ->front + 1) % CQ_MAX_SIZE; // front(출구)의 인덱스를 1증가시킨다, 범위 초과 방지를 위해 CQ_MAX_SIZE로 모듈러 연산
+        CQ->length--; // 카운터 감소
         return CQ->queue[CQ->front]; // 큐의 해당 front위치의 데이터를 반환
     }
 }
