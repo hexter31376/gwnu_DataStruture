@@ -47,7 +47,7 @@ void LQ_push (LinkedQueue* LQ, LQ_DataType data) { // 연결 큐의 주소, 삽�
     Qnode *newQnode = (Qnode*)malloc(sizeof(Qnode)); // 연결 큐 노드 동적 할당
 
     if (LQ_is_queue_full(newQnode)) { // 큐가 가득 차 있다면
-        printf("LQ_push : 포화 큐이므로 항목 삽입이 불가능합니다."); // 경고문 출력
+        printf("LQ_push : 포화 큐이므로 항목 삽입이 불가능합니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
     } else { // 큐가 가득 차 있지 않다면
         newQnode->data = data; // 파라미터 데이터를 새로운 노드의 데이터에 삽입한다
@@ -65,7 +65,7 @@ void LQ_push (LinkedQueue* LQ, LQ_DataType data) { // 연결 큐의 주소, 삽�
 // 연결큐에서 삭제
 LQ_DataType LQ_pop (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터로, pop한 데이터 반환
     if (LQ_is_queue_empty(LQ)) { // 큐가 비어있다면
-        printf("LQ_pop : 공백 큐이므로 삭제가 불가능합니다."); // 경고문 출력
+        printf("LQ_pop : 공백 큐이므로 삭제가 불가능합니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
     } else { // 큐가 비어있지 않다면
         Qnode* popedQnode = LQ->front; // pop할 노드 지정 이때 front가 출구이므로 front가 가리키는 노드 지정
@@ -83,7 +83,7 @@ LQ_DataType LQ_pop (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터�
 // 연결 큐에서 front 데이터를 반환
 LQ_DataType LQ_get_data (LinkedQueue* LQ) { // 연결 큐의 주소를 파라미터로, front 데이터 반환
     if (LQ_is_queue_empty(LQ)) { // 큐가 비어있다면
-        printf("LQ_get_data : 공백 큐이므로 삭제가 불가능합니다."); // 경고문 출력
+        printf("LQ_get_data : 공백 큐이므로 삭제가 불가능합니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
     } else { // 큐가 비어있지 않다면
         return LQ->front->data; // front의 데이터 반환
