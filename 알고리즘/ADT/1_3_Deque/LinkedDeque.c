@@ -124,7 +124,7 @@ LD_DataType LD_pop_rear(LinkedDeque* LD) { // 연결 덱의 주소를 매개변�
 }
 
 // 연결 덱에서 맨 처음 데이터를 반환
-LD_DataType LD_get_data_front(LinkedDeque* LD) {
+LD_DataType LD_get_data_front(LinkedDeque* LD) { // 연결 덱의 주소를 파라미터로, 맨 처음 데이터를 반환
     if (LD_is_deque_empty(LD)) { // 덱이 비어있다면
         printf("LD_get_data_front : 공백 덱이므로 데이터가 없습니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
@@ -134,7 +134,7 @@ LD_DataType LD_get_data_front(LinkedDeque* LD) {
 }
 
 // 연결 덱에서 맨 뒤 데이터를 반환
-LD_DataType LD_get_data_rear(LinkedDeque* LD) {
+LD_DataType LD_get_data_rear(LinkedDeque* LD) { // 연결 덱의 주소를 파라미터로, 맨 마지막 데이터를 반환
     if (LD_is_deque_empty(LD)) { // 덱이 비어있다면
         printf("LD_get_data_rear : 공백 덱이므로 데이터가 없습니다.\n"); // 경고문 출력
         exit(1); // 프로그램 종료
