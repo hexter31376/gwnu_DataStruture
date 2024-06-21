@@ -43,7 +43,7 @@ bool LD_is_deque_empty (LinkedDeque* LD) { // 연결 덱의 주소를 파라미�
     return LD->front == NULL; // front가 공백인지에 대한 참 거짓 결과 반환
 }
 
-// 덱의 앞에 삽입
+// 연결 덱의 앞에 삽입
 // LS_stack_push와 동일한 동작
 void LD_push_front (LinkedDeque* LD, LD_DataType data) { // 연결 덱의 주소, 삽입할 데이터를 매개변수로, 반환값 없음
     Dnode* newDnode = (Dnode*)malloc(sizeof(Dnode)); // 연결 덱 노드 동적 할당
@@ -60,10 +60,11 @@ void LD_push_front (LinkedDeque* LD, LD_DataType data) { // 연결 덱의 주소
             LD->front->prev = newDnode; // 연결 덱의 첫번째가 가리키는 노드의  이전 노드를 가리키는 prev가 새로운 노드를 가리키게 함
         }
         LD->front = newDnode; // 연결 덱의 첫번째 요소로 새로운 노드를 가리기게 함
+        LD->length++; // 연결 덱의 길이 증가
     }
 }
 
-// 덱의 뒤에 삽입
+// 연결 덱의 뒤에 삽입
 // LQ_queue_push와 동일한 동작
 void LD_push_rear (LinkedDeque* LD, LD_DataType data) { // 연결 덱의 주소, 삽입할 데이터를 매개변수로, 반환값 없음
     Dnode* newDnode = (Dnode*)malloc(sizeof(Dnode)); // 연결 덱 노드 동적 할당
@@ -80,5 +81,48 @@ void LD_push_rear (LinkedDeque* LD, LD_DataType data) { // 연결 덱의 주소,
             LD->rear->next = newDnode; // 연결 덱의 마지막이 가리키는 노드의  다음 노드를 가리키는 next가 새로운 노드를 가리키게 함
         }
         LD->rear = newDnode; // 연결 덱의 마지막 요소로 새로운 노드를 가리기게 함
+        LD->length++; // 연결 덱의 길이 증가
+    }
+}
+
+// 연결 덱의 맨 앞 데이터를 삭제
+// LS_stack_pop, LQ_queue_pop과 동일한 동작
+LD_DataType LD_pop_front (LinkedDeque* LD) { // 연결 덱의 주소를 매개변수로, pop한 데이터 반환
+    if(LD_is_deque_empty(LD)) { // 만약 큐가 비어있다면
+        printf("LD_pop_front : 공백 덱이므로 항목 삭제가 불가능합니다."); // 경고문 출력
+        exit(1); // 프로그램 종료
+    } else { // 큐가 비어있지 않다면
+        Dnode *popedDnode = LD->front; // pop할 노드를 선택, pop할 노드는 front가 가리키는 노드이다.
+        LD_DataType popedDdata = popedDnode->data; // pop 할 데이터를 미리 popedDdata에 저장
+        LD->front = popedDnode->next; // front가 pop할 노드의 다음 노드를 가리키게 한다.
+        if (!LD->front) { // 삭제 후에 공백 덱이 되었다면
+            LD->rear = NULL; // rear도 null로
+        } else { // 삭제 후에도 공백 덱이 아니라면
+            popedDnode->prev = NULL; // 지울 노드의 prev를 NULL;
+        }
+        free(popedDnode); // pop한 노드 동적 할당 해제
+        LD->length--; // 연결 덱의 길이 감소
+        return popedDdata; // pop한 데이터 반환
+    }
+}
+
+// 연결 덱의 맨 뒤 데이터를 삭제
+// stack과 queue에서는 이 부분을 다루지 않습니다.
+LD_DataType LD_pop_rear (LinkedDeque* LD) { // 연결 덱의 주소를 매개변수로, pop한 데이터 반환
+    if(LD_is_deque_empty(LD)) { // 만약 큐가 비어있다면
+        printf("LD_pop_rear : 공백 덱이므로 항목 삭제가 불가능합니다."); // 경고문 출력
+        exit(1); // 프로그램 종료
+    } else { // 큐가 비어있지 않다면
+        Dnode *popedDnode = LD->rear; // pop할 노드를 선택, pop할 노드는 rear가 가리키는 노드이다.
+        LD_DataType popedDdata = popedDnode->data; // pop 할 데이터를 미리 popedDdata에 저장
+        LD->rear = popedDnode->prev; // rear가 pop할 노드의 이전 노드를 가리키게 한다.
+        if (!LD->rear) { // 삭제 후에 공백 덱이 되었다면
+            LD->front = NULL; // front도 null로
+        } else { // 삭제 후에도 공백 덱이 아니라면
+            popedDnode->next = NULL; // 지울 노드의 next를 NULL;
+        }
+        free(popedDnode); // pop한 노드 동적 할당 해제
+        LD->length--; // 연결 덱의 길이 감소
+        return popedDdata; // pop한 데이터 반환
     }
 }
